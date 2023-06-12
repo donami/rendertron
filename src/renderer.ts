@@ -150,9 +150,15 @@ export class Renderer {
       return 0;
     });
     scrapedData.push(prices);
+    
+    let result: string | number = 0;
+
+    if (scrapedData.length > 0 && scrapedData[0]) {
+      result = scrapedData[0];
+    }
 
     await page.close();
-    return {status: statusCode, content: JSON.stringify(scrapedData)};
+    return {status: statusCode, content: result.toString()};
   }
 
   async screenshot(

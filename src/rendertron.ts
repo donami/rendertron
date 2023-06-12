@@ -94,7 +94,7 @@ export class Rendertron {
     ctx.status = serialized.status;
     // ctx.body = serialized.content;
     ctx.body = {
-      test: serialized.content,
+      result: serialized.content,
     }
   }
 
