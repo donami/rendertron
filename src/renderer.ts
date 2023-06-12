@@ -151,7 +151,7 @@ export class Renderer {
     });
     scrapedData.push(prices);
     
-    let result: string | number = 0;
+    let result: string | number | null = 0;
 
     if (scrapedData.length > 0 && scrapedData[0]) {
       result = scrapedData[0];
