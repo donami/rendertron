@@ -140,10 +140,19 @@ export class Renderer {
         injectBaseHref, `${parsedUrl.protocol}//${parsedUrl.host}`);
 
     // Serialize page.
-    const result = await page.evaluate('document.firstElementChild.outerHTML');
+    // const result = await page.evaluate('document.firstElementChild.outerHTML');
+    let scrapedData = [];
+    await page.waitForSelector('.player-prices');
+    let prices = await page.$$eval('.player-prices .price-num', (links) => {
+      if (links.length) {
+        return links[0].textContent;
+      }
+      return 0;
+    });
+    scrapedData.push(prices);
 
     await page.close();
-    return {status: statusCode, content: result};
+    return {status: statusCode, content: JSON.stringify(scrapedData)};
   }
 
   async screenshot(

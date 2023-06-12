@@ -92,7 +92,10 @@ export class Rendertron {
     // Mark the response as coming from Rendertron.
     ctx.set('x-renderer', 'rendertron');
     ctx.status = serialized.status;
-    ctx.body = serialized.content;
+    // ctx.body = serialized.content;
+    ctx.body = {
+      test: serialized.content,
+    }
   }
 
   async handleScreenshotRequest(ctx: Koa.Context, url: string) {
