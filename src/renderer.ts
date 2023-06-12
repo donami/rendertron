@@ -158,7 +158,7 @@ export class Renderer {
     }
 
     await page.close();
-    return {status: statusCode, content: result.toString()};
+    return {status: statusCode, content: result === null ? '0' : result.toString()};
   }
 
   async screenshot(
